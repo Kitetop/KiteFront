@@ -1,0 +1,57 @@
+{
+	"name": "example",
+	"version": "1.0.0",
+	"description": "Now I’m the model of a modern major general / The venerated Virginian veteran whose men are all / Lining up, to put me up on a pedestal / Writin’ letters to relatives / Embellishin’ my elegance and eloquence / But the elephant is in the room / The truth is in ya face when ya hear the British cannons go / BOOM",
+	"private": true,
+	"keywords": [],
+	"author": "xiesz.fnst <xiesz.fnst@cn.fujitsu.com>",
+	"license": "ISC",
+	"main": "src/main.ts",
+	"scripts": {
+    "serve": "vue-cli-service serve --mode development",
+    "prod-serve": "vue-cli-service serve --mode prod",
+    "build": "vue-cli-service build",
+    "dev-build": "vue-cli-service build --mode development",
+    "prod-build": "vue-cli-service build --mode prod",
+    "stable-build": "vue-cli-service build --mode stable",
+    "lint": "vue-cli-service lint --format html",
+    "lint-dev": "vue-cli-service lint",
+    "test:unit": "vue-cli-service test:unit"
+  },
+	"dependencies": {
+		"core-js": "^2.6.5",
+		"vue": "^2.6.10",
+		"vue-class-component": "^7.0.2",
+		"vue-property-decorator": "^8.1.0",
+		"vue-router": "^3.0.3",
+		"sdk": "^1.0.0"
+	},
+	"devDependencies": {
+		"@types/jest": "^23.1.4",
+		"@vue/cli-plugin-babel": "^3.9.0",
+		"@vue/cli-plugin-typescript": "^3.9.0",
+		"@vue/cli-plugin-unit-jest": "^3.9.0",
+		"@vue/cli-service": "^3.9.0",
+		"@vue/test-utils": "1.0.0-beta.29",
+		"babel-core": "7.0.0-bridge.0",
+		"lint-staged": "^8.1.5",
+		"sass": "^1.19.0",
+		"sass-loader": "^8.0.0",
+		"ts-jest": "^23.0.0",
+		"typescript": "~3.9.3",
+		"vue-template-compiler": "^2.6.10"
+	},
+	"gitHooks": {
+		"pre-commit": "lint-staged"
+	},
+	"lint-staged": {
+		"*.ts": [
+			"vue-cli-service lint",
+			"git add"
+		],
+		"*.vue": [
+			"vue-cli-service lint",
+			"git add"
+		]
+	}
+}
