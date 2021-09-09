@@ -1,6 +1,6 @@
 import Vue from 'vue';
 import Component from 'vue-class-component';
-import { sdk } from 'sdk';
+import FnstSDK from 'sdk';
 
 @Component
 export default class Test extends Vue {
@@ -14,7 +14,7 @@ export default class Test extends Vue {
   public render() {
     return (
       <div style={`border:1px solid red; width: ${this.width}%`}>
-        <button onClick = { this.handleClick}>点我 { sdk() }</button>
+        <button onClick = { this.handleClick}>点我 { FnstSDK.getType({}) }</button>
         { this.value }
       </div>
     );
