@@ -1,4 +1,13 @@
 /**
+ * 
+ */
+
+export type Validators = {
+  getType: typeof getType,
+  isType: typeof isType,
+  isNumber: typeof isNumber,
+}
+/**
  * 得到传入参数的数据类型
  * @param {unknown} value
  */
