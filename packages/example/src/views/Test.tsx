@@ -23,6 +23,7 @@ export default class Test extends Vue {
         <p>isNumber(-1.23): { FnstSDK.isNumber(-1.23) + '' }</p>
         <p>isNumber(object): { FnstSDK.isNumber({}) + '' }</p>
         <p>isNumber(array): { FnstSDK.isNumber([1]) + '' }</p>
+        <p>isNumber(array): { FnstSDK.getValueSafety([0, 1], {2 : {1: null}}) + '' }</p>
       </div>
     );
   }
