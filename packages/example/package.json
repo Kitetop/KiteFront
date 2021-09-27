@@ -8,23 +8,25 @@
 	"license": "ISC",
 	"main": "src/main.ts",
 	"scripts": {
-    "serve": "vue-cli-service serve --mode development",
-    "prod-serve": "vue-cli-service serve --mode prod",
-    "build": "vue-cli-service build",
-    "dev-build": "vue-cli-service build --mode development",
-    "prod-build": "vue-cli-service build --mode prod",
-    "stable-build": "vue-cli-service build --mode stable",
-    "lint": "vue-cli-service lint --format html",
-    "lint-dev": "vue-cli-service lint",
-    "test:unit": "vue-cli-service test:unit"
-  },
+		"serve": "vue-cli-service serve --mode development",
+		"prod-serve": "vue-cli-service serve --mode prod",
+		"build": "vue-cli-service build",
+		"dev-build": "vue-cli-service build --mode development",
+		"prod-build": "vue-cli-service build --mode prod",
+		"stable-build": "vue-cli-service build --mode stable",
+		"lint": "vue-cli-service lint --format html",
+		"lint-dev": "vue-cli-service lint",
+		"test:unit": "vue-cli-service test:unit"
+	},
 	"dependencies": {
+		"ant-design-vue": "^2.2.8",
 		"core-js": "^2.6.5",
+		"highlight.js": "^11.2.0",
+		"sdk": "^1.0.0",
 		"vue": "^2.6.10",
 		"vue-class-component": "^7.0.2",
 		"vue-property-decorator": "^8.1.0",
-		"vue-router": "^3.0.3",
-		"sdk": "^1.0.0"
+		"vue-router": "^3.0.3"
 	},
 	"devDependencies": {
 		"@types/jest": "^23.1.4",

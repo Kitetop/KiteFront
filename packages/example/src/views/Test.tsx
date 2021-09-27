@@ -11,8 +11,20 @@ export default class Test extends Vue {
     this.value++;
     this.width = this.width / this.value;
   }
+
+  public created() {
+    document.addEventListener('click', this.checkNode);
+    this.$once('hook:beforeDestroy', () => {
+      document.removeEventListener('click', this.checkNode);
+    });
+  }
+
+  public checkNode(event: Event) {
+    FnstSDK.checkEventTargetNodeBelong(event, document.getElementById('bootom'));
+  }
   public render() {
     return (
+      <div>
       <div style={`border:1px solid red; width: ${this.width}%`}>
         <button onClick = { this.handleClick}>点我 { FnstSDK.getType({}) }</button>
         { this.value }
@@ -24,6 +36,8 @@ export default class Test extends Vue {
         <p>isNumber(object): { FnstSDK.isNumber({}) + '' }</p>
         <p>isNumber(array): { FnstSDK.isNumber([1]) + '' }</p>
         <p>isNumber(array): { FnstSDK.getValueSafety([0, 1], {2 : {1: null}}) + '' }</p>
+      </div>
+      <div style={`border:1px solid green; width: ${this.width}%; height: 300px`} id='bootom'></div>
       </div>
     );
   }

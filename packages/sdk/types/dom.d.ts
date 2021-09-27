@@ -1,0 +1,1 @@
+declare function checkEventTargetNodeBelong(event: Event, root: HTMLElement): boolean;
