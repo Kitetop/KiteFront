@@ -55,7 +55,6 @@ module.exports = {
       }
     }
   },
-  transpileDependencies: ['ant-design-vue'],
   configureWebpack: {
     // provide the app's title in webpack's name field, so that
     resolve: {
