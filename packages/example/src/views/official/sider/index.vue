@@ -26,16 +26,17 @@ import { treeData } from '../../data';
 export default class Sider extends Vue {
   public treeData: object[] = treeData;
   private searchQuery!: string;
-
   private handleSearchQueryChange({ target: { value: query}}): void {
     this.searchQuery = query;
   }
 }
 </script>
 <style lang="scss" scoped>
+@import '@/styles/config/var.scss';
+
 .scoped-page-title {
   font-weight: bold;
-  color: #409eff;
+  color: $web-primary-blue-color;
   font-size: 18px;
   margin: 0 auto;
   width: 100%;

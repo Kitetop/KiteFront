@@ -11,7 +11,7 @@ export type Validators = {
  * 得到传入参数的数据类型
  * @param {unknown} value
  */
-export function getType(value: unknown): string {
+function getType(value: unknown): string {
   return Object.prototype.toString.call(value).slice(8, -1);
 }
 /**
@@ -20,7 +20,7 @@ export function getType(value: unknown): string {
  * @param {string} expect => 期待的类型
  * @returns {boolean}
  */
-export function isType(value: unknown, expect: string) : boolean {
+function isType(value: unknown, expect: string) : boolean {
   return getType(value).toLowerCase() === expect;
 }
 
@@ -29,6 +29,12 @@ export function isType(value: unknown, expect: string) : boolean {
  * @param {unknown} value => 需要进行判断的数据
  * @returns {boolean}
  */
-export function isNumber(value: unknown): boolean {
+function isNumber(value: unknown): boolean {
   return isType(value, 'number');
+}
+
+export default  {
+  getType,
+  isType,
+  isNumber
 }

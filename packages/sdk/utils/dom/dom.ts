@@ -7,7 +7,7 @@ export type Dom = {
  * @param {HEMLElement} root
  * @returns {boolean}
  */
-export function checkEventTargetNodeBelong(event: Event, root: HTMLElement | null): boolean {
+function checkEventTargetNodeBelong(event: Event, root: HTMLElement | null): boolean {
   if (!root) return false;
   let target = event.target as HTMLElement;
   while (target && target.nodeType && (target as unknown as Document) !== document) {
@@ -15,4 +15,8 @@ export function checkEventTargetNodeBelong(event: Event, root: HTMLElement | nul
     target = target.parentNode as HTMLElement;
   }
   return false;
+}
+
+export default {
+  checkEventTargetNodeBelong
 }

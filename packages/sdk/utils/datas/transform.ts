@@ -8,7 +8,7 @@ export type Transform = {
  * @param {object} object => 需要进行取值得对象
  * @returns {Any}
  */
-export function getValueSafety(keys: any[], object: object | object[]): any {
+function getValueSafety(keys: any[], object: object | object[]): any {
   return keys.reduce((obj, index) => {
     return (obj && obj[index] !== undefined) ? obj[index] : null
   }, object)
@@ -18,7 +18,7 @@ export function getValueSafety(keys: any[], object: object | object[]): any {
  * @param {Blob} value
  * @returns {Promise<object>}
  */
-export function blobToJSON(value: Blob): Promise<object> {
+function blobToJSON(value: Blob): Promise<object> {
   const reader = new FileReader();
   reader.readAsText(value);
   return new Promise(resolve => {
@@ -30,4 +30,9 @@ export function blobToJSON(value: Blob): Promise<object> {
       }
     }
   })
+}
+
+export default {
+  getValueSafety,
+  blobToJSON
 }

@@ -1,21 +1,20 @@
 import FnstSDK, { install } from './utils/sdk';
-import * as validators from './utils/datas/validators';
-import * as transform from './utils/datas/transform';
-import * as sdkDom from './utils/dom/dom';
+import validators, { Validators } from './utils/datas/validators';
+import transform, { Transform } from './utils/datas/transform';
+import dom, { Dom } from './utils/dom/dom';
 
 export type SDK = {install: typeof install}
-  & validators.Validators
-  & transform.Transform
-  & sdkDom.Dom
+  & Validators
+  & Transform
+  & Dom
 ;
-/** Install validators methods */
 FnstSDK.install({
-  getType: validators.getType,
-  isNumber: validators.isNumber,
+  /** validators.ts */
+  ...validators,
   /** transform.ts */
-  getValueSafety: transform.getValueSafety,
+  ...transform,
   /** dom.ts */
-  checkEventTargetNodeBelong: sdkDom.checkEventTargetNodeBelong
+  ...dom
 });
 
 export default FnstSDK as unknown as SDK; 
