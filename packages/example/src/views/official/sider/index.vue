@@ -26,8 +26,14 @@ import { treeData } from '../../data';
 export default class Sider extends Vue {
   public treeData: object[] = treeData;
   private searchQuery!: string;
-  private handleSearchQueryChange({ target: { value: query}}): void {
-    this.searchQuery = query;
+  public created() {
+    // console.log(FrontSDK.isNumber('123'));
+    // console.log(FrontSDK.isNumber(123));
+    // console.log(FrontSDK.isNumber(false));
+    // console.log(FrontSDK.getAllParentNodeList(treeData));
+  }
+  private handleSearchQueryChange(event: InputEvent): void {
+    this.searchQuery = (event.target as HTMLInputElement).value;
   }
 }
 </script>

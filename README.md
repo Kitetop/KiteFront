@@ -4,7 +4,7 @@
    > * `cd frontsdk`
    > * `npm i -g lerna`
 3. 安装项目依赖
-   > `lerna bootstrap --hoist`
+   > `lerna bootstrap`
 4. 运行项目
    > * `cd packages/example `
    > * `npm run serve`

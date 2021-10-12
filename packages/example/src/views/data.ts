@@ -1,6 +1,6 @@
 const getValueSafety = {
   id: 'getValueSafety',
-  text: 'getValueSafety'
+  text: 'getValueSafety',
 };
 
 const blobToJSON = {
