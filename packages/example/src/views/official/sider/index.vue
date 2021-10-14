@@ -22,6 +22,7 @@
 import Vue from 'vue';
 import Component from 'vue-class-component';
 import { treeData } from '../../data';
+import FrontSDK from 'sdk';
 @Component
 export default class Sider extends Vue {
   public treeData: object[] = treeData;

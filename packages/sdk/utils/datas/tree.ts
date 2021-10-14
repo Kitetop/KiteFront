@@ -13,13 +13,15 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-type treeOptions = {
+export interface SDKTreeOptions {
   uidText: string,
   childText: string,
   searchField: string | number
 }
-type tree = {
-  [arg: string]: any
+export interface SDKTreeNode {
+  id?: string | number,
+  children?: SDKTreeNode[],
+  [properties: string]: any
 }
 
 export type Tree = {
@@ -29,23 +31,15 @@ export type Tree = {
 /**
  * 获得树形结构数据中拥有子节点的节点(可以使用searchField字段更改检索的结果)
  * @param {tree[]} treeData
- * @param {treeOptions} [options={
- *   uidText: 'id',
- *   childText: 'children',
- *   searchField: 'id'
- * }]
+ * @param {treeOptions} [options={childText: 'children', searchField: 'id'}]
  * @param {any[]} [result=[]]
  * @returns {any[]}
  */
-function getAllParentNodeList(treeData: tree[], options: treeOptions = {
-  uidText: 'id',
-  childText: 'children',
-  searchField: 'id'
-}, result: any[] = []): any[] {
+function getAllParentNodeList(treeData: SDKTreeNode[], options: Partial<SDKTreeOptions> = {}, result: any[] = []): any[] {
   treeData.forEach(value => {
-    if (value[options.childText] && value[options.childText].length > 0) {
-      result.push(value[options.searchField]);
-      getAllParentNodeList(value[options.childText], options, result);
+    if (value[options.childText || 'children'] && value[options.childText || 'children'].length > 0) {
+      result.push(value[options.searchField || 'id']);
+      getAllParentNodeList(value[options.childText || 'children'], options, result);
     }
   })
   return result;
