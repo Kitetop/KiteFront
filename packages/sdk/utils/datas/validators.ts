@@ -17,6 +17,7 @@ export type Validators = {
   getType: typeof getType,
   isType: typeof isType,
   isNumber: typeof isNumber,
+  isEmpty: typeof isEmpty
 }
 /**
  * 得到传入参数的数据类型
@@ -44,8 +45,25 @@ function isNumber(value: unknown): boolean {
   return isType(value, 'number');
 }
 
+/**
+ * 判断该参数是否为空(刻意回避了参数值为 0: number 的情况，当为0时，不认定为空)
+ * @param {any} value
+ * @returns {boolean}
+ */
+function isEmpty(value: any): boolean {
+  if (['Array', 'Object'].indexOf(getType(value)) > -1) {
+    for (const _key in value) return false;
+    return true;
+  }
+  return typeof value === 'undefined' ||
+    value === null ||
+    value === '' || 
+    (typeof value === 'string' && value.trim() === '');
+}
+
 export default  {
   getType,
   isType,
-  isNumber
-}
+  isNumber,
+  isEmpty
+} 

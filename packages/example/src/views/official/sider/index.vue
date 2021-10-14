@@ -31,7 +31,7 @@ export default class Sider extends Vue {
     // console.log(FrontSDK.isNumber('123'));
     // console.log(FrontSDK.isNumber(123));
     // console.log(FrontSDK.isNumber(false));
-    // console.log(FrontSDK.getAllParentNodeList(treeData));
+    console.log(FrontSDK.findTreeNode(treeData, 'blobToJSON'));
   }
   private handleSearchQueryChange(event: InputEvent): void {
     this.searchQuery = (event.target as HTMLInputElement).value;
