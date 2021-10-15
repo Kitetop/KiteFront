@@ -21,18 +21,16 @@
 <script lang='ts'>
 import Vue from 'vue';
 import Component from 'vue-class-component';
-import { treeData } from '../../data';
-import FrontSDK from 'sdk';
+import treeData from '../../data';
+
 @Component
 export default class Sider extends Vue {
   public treeData: object[] = treeData;
+
   private searchQuery!: string;
-  public created() {
-    // console.log(FrontSDK.isNumber('123'));
-    // console.log(FrontSDK.isNumber(123));
-    // console.log(FrontSDK.isNumber(false));
-    console.log(FrontSDK.findTreeNode(treeData, 'blobToJSON'));
-  }
+
+  public created() {}
+
   private handleSearchQueryChange(event: InputEvent): void {
     this.searchQuery = (event.target as HTMLInputElement).value;
   }

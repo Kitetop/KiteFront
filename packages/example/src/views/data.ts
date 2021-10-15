@@ -1,6 +1,6 @@
 const getValueSafety = {
   id: 'getValueSafety',
-  text: 'getValueSafety',
+  text: 'getValueSafety'
 };
 
 const blobToJSON = {
@@ -28,5 +28,5 @@ const Dom = {
   children: [checkEventTargetNodeBelong]
 };
 
-export const treeData = [Transfrom, Dom];
-
+const treeData = [Transfrom, Dom];
+export default treeData;

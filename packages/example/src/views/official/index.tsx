@@ -8,7 +8,6 @@ import './index.scss';
   components: { Sider }
 })
 export default class Layout extends Vue {
-
   private render() {
     return (
       <a-layout style='height: 100%'>

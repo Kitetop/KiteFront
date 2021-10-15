@@ -7,6 +7,7 @@
 import Vue from 'vue';
 import Component from 'vue-class-component';
 import Test from './views/official/index';
+
 @Component({
   components: { Test }
 })

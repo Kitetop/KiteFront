@@ -15,7 +15,7 @@
 		"prod-build": "vue-cli-service build --mode prod",
 		"stable-build": "vue-cli-service build --mode stable",
 		"lint": "vue-cli-service lint --format html",
-		"lint-dev": "vue-cli-service lint",
+		"lint-dev": "eslint src --fix --ext .js,.jsx,.ts,.tsx,.vue ",
 		"test:unit": "vue-cli-service test:unit"
 	},
 	"dependencies": {
@@ -30,12 +30,18 @@
 	},
 	"devDependencies": {
 		"@types/jest": "^23.1.4",
+		"@typescript-eslint/eslint-plugin": "^5.0.0",
+		"@typescript-eslint/parser": "^5.0.0",
 		"@vue/cli-plugin-babel": "^3.9.0",
 		"@vue/cli-plugin-typescript": "^3.9.0",
 		"@vue/cli-plugin-unit-jest": "^3.9.0",
 		"@vue/cli-service": "^3.9.0",
 		"@vue/test-utils": "1.0.0-beta.29",
 		"babel-core": "7.0.0-bridge.0",
+		"eslint": "^7.32.0",
+		"eslint-config-airbnb-base": "^14.2.1",
+		"eslint-plugin-import": "^2.25.2",
+		"eslint-plugin-vue": "^7.19.1",
 		"lint-staged": "^8.1.5",
 		"sass": "^1.19.0",
 		"sass-loader": "^8.0.0",
