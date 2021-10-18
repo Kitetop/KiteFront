@@ -55,7 +55,7 @@ function getAllParentNodeList(treeData: SDKTreeNode[], options: Partial<SDKTreeO
  * @param {Partial<SDKTreeOptions>} [options={}]
  * @returns {SDKTreeNode[]}
  */
-function filterTreeRouter(treeData: SDKTreeNode[], query: string | number, strict: boolean = true, options: Partial<SDKTreeOptions> = {}): SDKTreeNode[] {
+function filterTreeRouter(treeData: SDKTreeNode[], query: string | number, strict = true, options: Partial<SDKTreeOptions> = {}): SDKTreeNode[] {
   const tree: SDKTreeNode[] = [];
   for (let i = 0; i < treeData.length; i++) {
     const node = treeData[i];

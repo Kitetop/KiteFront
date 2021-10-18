@@ -10,10 +10,17 @@
     <div class="scoped-sider-tree">
       <a-tree
       :show-line="true"
+      show-icon
       :replaceFields="{ title: 'text', key: 'id' }"
+      defaultExpandAll
       ref="tree"
       :tree-data="treeData"
       >
+        <a-icon slot="switcherIcon"
+          type="down-square" style="font-size: 1rem"
+          twoToneColor="#F5222d"
+          theme="twoTone"/>
+        <a-icon slot="api" type='bug' theme="twoTone" twoToneColor="#409EFF" />
       </a-tree>
     </div>
   </div>
@@ -55,5 +62,9 @@ export default class Sider extends Vue {
 }
 ::v-deep .ant-divider-horizontal {
   margin: 1rem 0;
+}
+
+::v-deep .ant-tree-node-content-wrapper {
+  font-weight: 600;
 }
 </style>

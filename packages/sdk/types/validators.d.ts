@@ -13,10 +13,11 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { SDKTreeNode, SDKTreeOptions } from "../utils/datas/tree";
 
-declare function getAllParentNodeList(treeData: SDKTreeNode[], options: Partial<SDKTreeOptions>, result: unknown[]): unknown[];
+declare function getType(value: unknown): string;
 
-declare function filterTreeRouter(treeData: SDKTreeNode[], query: number | string, strict: boolean, options: Partial<SDKTreeOptions>): SDKTreeNode[];
+declare function isType(value: unknown, expect: string): boolean;
 
-declare function findTreeNode(treeData: SDKTreeNode[], query: string | number, options: Partial<SDKTreeOptions>): SDKTreeNode[]
+declare function isNumber(value: unknown): boolean;
+
+declare function isEmpty(value: any): boolean;

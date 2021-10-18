@@ -28,6 +28,7 @@ module.exports = {
     'import/no-unresolved': 'off',
     'import/extensions': 'off',
     'class-methods-use-this': 'off',
+    '@typescript-eslint/no-explicit-any': 'off',
     'no-plusplus': 'off',
     indent: [2, 2, {
       SwitchCase: 1
