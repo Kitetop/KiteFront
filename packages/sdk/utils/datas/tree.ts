@@ -14,14 +14,14 @@
  * limitations under the License.
  */
 import validators from './validators';
-export interface SDKTreeOptions {
+export interface KiteSDKTreeOptions {
   uidText: string,
   childText: string,
   searchField: string | number
 }
-export interface SDKTreeNode {
+export interface KiteSDKTreeNode {
   id?: string | number,
-  children?: SDKTreeNode[],
+  children?: KiteSDKTreeNode[],
   [properties: string]: any
 }
 
@@ -38,7 +38,7 @@ export type Tree = {
  * @param {any[]} [result=[]]
  * @returns {any[]}
  */
-function getAllParentNodeList(treeData: SDKTreeNode[], options: Partial<SDKTreeOptions> = {}, result: any[] = []): any[] {
+function getAllParentNodeList(treeData: KiteSDKTreeNode[], options: Partial<KiteSDKTreeOptions> = {}, result: any[] = []): any[] {
   treeData.forEach(value => {
     if (value[options.childText || 'children'] && value[options.childText || 'children'].length > 0) {
       result.push(value[options.searchField || 'id']);
@@ -55,8 +55,8 @@ function getAllParentNodeList(treeData: SDKTreeNode[], options: Partial<SDKTreeO
  * @param {Partial<SDKTreeOptions>} [options={}]
  * @returns {SDKTreeNode[]}
  */
-function filterTreeRouter(treeData: SDKTreeNode[], query: string | number, strict = true, options: Partial<SDKTreeOptions> = {}): SDKTreeNode[] {
-  const tree: SDKTreeNode[] = [];
+function filterTreeRouter(treeData: KiteSDKTreeNode[], query: string | number, strict = true, options: Partial<KiteSDKTreeOptions> = {}): KiteSDKTreeNode[] {
+  const tree: KiteSDKTreeNode[] = [];
   for (let i = 0; i < treeData.length; i++) {
     const node = treeData[i];
     const child = !validators.isEmpty(node[options.childText || 'children']) ? filterTreeRouter(node[options.childText || 'children'], query, strict) : [];
@@ -80,8 +80,8 @@ function filterTreeRouter(treeData: SDKTreeNode[], query: string | number, stric
  * @param {Partial<SDKTreeOptions>} [options={}]
  * @returns {(SDKTreeNode | undefined)}
  */
-function findTreeNode(treeData: SDKTreeNode[], query: string | number, options: Partial<SDKTreeOptions> = {}): SDKTreeNode[] {
-  let nodes: SDKTreeNode[] = [];
+function findTreeNode(treeData: KiteSDKTreeNode[], query: string | number, options: Partial<KiteSDKTreeOptions> = {}): KiteSDKTreeNode[] {
+  let nodes: KiteSDKTreeNode[] = [];
   for (let i = 0; i < treeData.length; i++) {
     const node = treeData[i];
     if (node[options.searchField || 'id'] === query) nodes.push(node);

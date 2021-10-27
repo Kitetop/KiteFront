@@ -19,7 +19,9 @@ module.exports = {
   "rules": {
     'no-console': 'error',
     'no-plusplus': 'off',
+    'linebreak-style': 'off',
     '@typescript-eslint/no-explicit-any': 'off',
+    '@typescript-eslint/ban-types': 'off',
     'indent': [2, 2, {
       'SwitchCase': 1
     }],

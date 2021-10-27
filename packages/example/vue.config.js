@@ -1,24 +1,23 @@
+/* eslint-disable */
 'use strict';
+
 const path = require('path');
-/** GZip dependency */
-// const CompressionWebpackPlugin = require('compression-webpack-plugin');
-// const productionGzipExtensions = ['js', 'css'];
 
 function resolve(dir) {
   return path.join(__dirname, dir);
 }
 
 const port = process.env.port || process.env.npm_config_port || 9527; // dev port
-const targetUrl = process.env.VUE_APP_TARGET_API || '/SQTRepid'
+const targetUrl = process.env.VUE_APP_TARGET_API || '/SQTRepid';
 const publicPath = process.env.VUE_APP_PUBLIC_PATH || '/';
 module.exports = {
-  publicPath: publicPath,
+  publicPath,
   outputDir: 'dist',
   assetsDir: 'static',
   lintOnSave: process.env.NODE_ENV === 'development',
   productionSourceMap: false,
   devServer: {
-    port: port,
+    port,
     open: true,
     overlay: {
       warnings: false,
@@ -33,8 +32,8 @@ module.exports = {
           '^/dev-api': ''
         }
       },
-      'resource': {
-        target: process.env.VUE_APP_RESOURCE_PATH + '/sqtracer',
+      resource: {
+        target: `${process.env.VUE_APP_RESOURCE_PATH}/sqtracer`,
         changeOrigin: true,
         ws: true,
         pathRewrite: {

@@ -66,4 +66,4 @@ export default  {
   isType,
   isNumber,
   isEmpty
-} 
+}
