@@ -15,21 +15,24 @@
  */
 import Application = require("koa");
 import RouterType = require("koa-router");
-import KiteConfigOptions = require('./config');
+import KiteGateWayConfigOptions = require('./config');
+import IndexController = require('./controllers/IndexController')
 
+const config:KiteGateWayConfigOptions = require('./config');
+const router: RouterType = require('./config/router');
 
-const config = require('./config');
-const Router = require('@koa/router');
 
 const Koa = require('koa');
 const app: Application = new Koa();
-/** 导入Koa.js的路由模块 */
-const router: RouterType = new Router();
 
-app.use( ctx => {
-  ctx.body = 'hello koa== !';
+router.get('/test', ctx => {
+  ctx.body = '路由路由！！！'
 });
-import IndexController = require('./controllers/IndexController')
+
+app
+  .use(router.routes())
+  .use(router.allowedMethods());
+
 const contr = new IndexController();
 contr.log('就是喜欢试试吖！！！！')
 app.listen(config.port, () => {

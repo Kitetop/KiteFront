@@ -13,10 +13,15 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+import Application = require('koa');
 import BaseController = require('./BaseController');
 class IndexController extends BaseController {
   constructor() {
-    super()
+    super('/index');
+  }
+
+  execute(ctx: Application.ParameterizedContext) {
+    ctx.body = 'This is IndexController.ts'
   }
 }
 

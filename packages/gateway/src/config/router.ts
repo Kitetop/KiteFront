@@ -13,20 +13,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
- import Application = require("koa");
-import RouterType = require("koa-router");
-const router:RouterType = require('../config/router');
-abstract class BaseController {
-  constructor(url: string) {
-    router.get(url, ctx => {
-      this.execute(ctx);
-    })
-  }  
-  public log(info: string, type = 'Warning'): void {
-    console.log(`[Kite GateWay]: ${type} => ${info}`);
-  }
+ import RouterType = require("koa-router");
+const Router = require('@koa/router');
 
-  abstract execute(ctx: Application.ParameterizedContext): void | any;
-}
+const router:RouterType = new Router();
 
-export = BaseController;
+module.exports = router;

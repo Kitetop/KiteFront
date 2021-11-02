@@ -24,7 +24,7 @@ export declare function install(name: string, method: Function | object): void;
  * @returns {void}
  */
 export declare function install(methods: {[proprty: string]: Function | object}): void;
-export default class FnstSDK {
+export default class KiteSDK {
   /**
     * 获得函数库的版本信息
     * @returns {string}
@@ -37,11 +37,11 @@ export default class FnstSDK {
     */
   public static install(name: string | object, method?: Function | object): void {
     if (typeof name === 'string') {
-      Object.assign(FnstSDK, {
+      Object.assign(KiteSDK, {
         [name]: method
       })
     } else {
-      Object.assign(FnstSDK, name);
+      Object.assign(KiteSDK, name);
     }
   }
 }
