@@ -13,15 +13,20 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
- import Application = require("koa");
+import Application = require("koa");
 import RouterType = require("koa-router");
-const router:RouterType = require('../config/router');
+
+type KiteGateWayHttpMethod = 'head' | 'options'| 'get'| 'put'| 'patch'| 'post'| 'delete';
+
 abstract class BaseController {
-  constructor(url: string) {
-    router.get(url, ctx => {
-      this.execute(ctx);
-    })
-  }  
+  constructor(router: RouterType, url: string, method: KiteGateWayHttpMethod = 'get') {
+    try {
+      router[method](url, ctx => this.execute(ctx));
+    } catch (e) {
+      this.log('路由不支持该方法，请检查路由配置~~~~', 'error');
+    }
+  }
+
   public log(info: string, type = 'Warning'): void {
     console.log(`[Kite GateWay]: ${type} => ${info}`);
   }

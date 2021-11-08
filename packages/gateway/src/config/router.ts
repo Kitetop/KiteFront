@@ -13,9 +13,16 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
- import RouterType = require("koa-router");
-const Router = require('@koa/router');
+export interface KiteGateWayRouteConfig {
+  path: string;
+  action: string;
+  method: string
+}
 
-const router:RouterType = new Router();
+module.exports = {
+  routers: [
+    { path: '/indexs', action: 'IndexController', method: 'GET'},
+    { path: '/index', action: 'IndexController', method: 'GET'},
+  ]
+};
 
-module.exports = router;

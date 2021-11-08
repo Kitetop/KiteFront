@@ -16,9 +16,6 @@
 import Application = require('koa');
 import BaseController = require('./BaseController');
 class IndexController extends BaseController {
-  constructor() {
-    super('/index');
-  }
 
   execute(ctx: Application.ParameterizedContext) {
     ctx.body = 'This is IndexController.ts'

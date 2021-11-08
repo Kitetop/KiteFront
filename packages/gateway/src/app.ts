@@ -14,27 +14,9 @@
  * limitations under the License.
  */
 import Application = require("koa");
-import RouterType = require("koa-router");
-import KiteGateWayConfigOptions = require('./config');
-import IndexController = require('./controllers/IndexController')
-
-const config:KiteGateWayConfigOptions = require('./config');
-const router: RouterType = require('./config/router');
-
 
 const Koa = require('koa');
 const app: Application = new Koa();
+const run = require('./kernel/Phase');
 
-router.get('/test', ctx => {
-  ctx.body = '路由路由！！！'
-});
-
-app
-  .use(router.routes())
-  .use(router.allowedMethods());
-
-const contr = new IndexController();
-contr.log('就是喜欢试试吖！！！！')
-app.listen(config.port, () => {
-  console.log(`server is running at http://localhost:${config.port}`);
-});
+run(app);
