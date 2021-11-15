@@ -1,0 +1,24 @@
+{
+  "name": "vxbot",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "自定义聊天机器人，简单回复信息、日程提醒、活跃气氛以及拟构建一个量化股票基金交易策略提示",
+  "main": "app.ts",
+  "scripts": {
+    "start": "node --loader ts-node/esm ./src/app.ts",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Kitetop",
+  "license": "ISC",
+  "dependencies": {
+    "qrcode-terminal": "^0.12.0",
+    "wechaty": "^1.0.6",
+    "wechaty-puppet": "~1.3",
+    "wechaty-puppet-wechat": "^1.0.1"
+  },
+  "devDependencies": {
+    "@chatie/tsconfig": "~1.0.3",
+    "ts-node": "^10.4.0",
+    "typescript": "~4.4.0"
+  }
+}
