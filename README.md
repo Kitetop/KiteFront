@@ -1,5 +1,5 @@
 ### 如何下载此项目
-1. `git clone http://git.fnst.cn.fujitsu.com/xiesz.fnst/frontsdk.git`
+1. `git clone https://github.com/Kitetop/KiteFront.git`
 2. 该项目使用Lerna来对多项目进行管理，如果本地没有安装Lerna，运行如下命令安装Lerna
    > * `cd frontsdk`
    > * `npm i -g lerna`

@@ -1,5 +1,5 @@
 /**
- * Copyright © 2021 xiesz.fnst. All rights reserved. 
+ * Copyright © 2021 Kitetop All rights reserved. 
  * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import FnstSDK, { install } from './utils/sdk';
+import KiteSDK, { install } from './utils/sdk';
 import validators, { Validators } from './utils/datas/validators';
 import transform, { Transform } from './utils/datas/transform';
 import tree, { Tree } from './utils/datas/tree';
@@ -25,7 +25,7 @@ export type SDK = {install: typeof install}
   & Dom
   & Tree
 ;
-FnstSDK.install({
+KiteSDK.install({
   /** validators.ts */
   ...validators,
   /** transform.ts */
@@ -35,5 +35,4 @@ FnstSDK.install({
   /** dom.ts */
   ...dom
 });
-
-export default FnstSDK as unknown as SDK; 
+export default KiteSDK as unknown as SDK; 

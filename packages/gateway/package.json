@@ -1,12 +1,12 @@
 {
-  "name": "y",
+  "name": "kite-gateway",
   "version": "1.0.0",
   "description": "BFF层，用于数据清洗权限验证，适为多端引开发提供接口管理平台以及监控平台",
   "main": "src/app.ts",
-  "author": "xiesz.fnst",
+  "author": "Kitetop <1363215999@qq.com>",
   "license": "ISC",
   "scripts": {
-    "start": "set NODE_ENV=development && nodemon ./src/app.ts"
+    "start": "cross-env NODE_ENV=development nodemon ./src/app.ts"
   },
   "dependencies": {
     "@koa/router": "^10.1.1",
@@ -18,6 +18,9 @@
     "@types/node": "^16.11.6",
     "nodemon": "^2.0.14",
     "ts-node": "^10.4.0",
+    "@typescript-eslint/eslint-plugin": "^5.0.0",
+    "@typescript-eslint/parser": "^5.0.0",
+    "eslint": "7.4.0",
     "typescript": "~3.9.3"
   }
 }

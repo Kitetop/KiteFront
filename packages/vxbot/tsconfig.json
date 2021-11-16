@@ -1,27 +1,28 @@
 {
-    "compilerOptions": {
-      "outDir": "dist",
-      "target": "esnext",
-      "module": "esnext",
-      "strict": true,
-      "importHelpers": true,
-      "moduleResolution": "node",
-      "experimentalDecorators": true,
-      "esModuleInterop": true,
-      "allowSyntheticDefaultImports": true,
+  "compilerOptions": {
+    "target": "esnext",
+    "module": "commonjs",
+    "strict": true,
+    "moduleResolution": "node",
+    "experimentalDecorators": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": false,
+    "importsNotUsedAsValues": "error",
+    "isolatedModules": true,
+    "allowJs": true,
+    "sourceMap": true,
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["src/*"]
     },
     "lib": [
-        "esnext"
-    ],
-    "exclude": [
-      "node_modules/",
-      "dist/",
-      "tests/fixtures/"
-    ],
-    "include": [
-      "examples/*.ts",
-      "scripts/**/*.ts",
-      "src/**/*.ts",
-      "tests/**/*.ts"
-    ],
-  }
+      "esnext"
+    ]
+  },
+  "include": [
+    "src/**/*.ts"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
+}
