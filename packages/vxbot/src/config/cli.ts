@@ -20,6 +20,6 @@ const program = new Command();
 
 program
   .command('init').description('设置微信机器人的环境变量：🍺🍺🍺🍺')
-  .action((_name, cmd) => {
-    console.log(_name, cmd);
-  })
+  // .action((_name, cmd) => {
+  // console.log(_name, cmd);
+  // })

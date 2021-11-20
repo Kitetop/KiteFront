@@ -1,8 +1,11 @@
-import { WechatyBuilder, log, ScanStatus, Contact, Message } from "wechaty";
-import qrcodeTerminal from "qrcode-terminal";
+import { WechatyBuilder, log, ScanStatus, Contact, Message } from 'wechaty';
+import qrcodeTerminal from 'qrcode-terminal';
 import { buildOptions } from './config/wechat';
+import MessageAdapter from './kernel/MessageAdapter';
+import onMessage from './kernel/dispatchMessage';
+import dealFinance from './command/finance';
 
-
+MessageAdapter.getInstance().registerPipeline('KiteBot:金融', dealFinance);
 const app = async (option: any) => {
   const vxbot = WechatyBuilder.build(option);
   vxbot.on('scan', onScan);
@@ -16,9 +19,9 @@ const onScan = (qrcode: string, status: number) => {
     qrcodeTerminal.generate(qrcode, { small: true }); // show qrcode on console
 
     const qrcodeImageUrl = [
-      "https://wechaty.js.org/qrcode/",
+      'https://wechaty.js.org/qrcode/',
       encodeURIComponent(qrcode),
-    ].join("");
+    ].join('');
 
     log.info(
       'KiteVxBot',
@@ -28,24 +31,13 @@ const onScan = (qrcode: string, status: number) => {
       qrcodeImageUrl
     );
   } else {
-    log.info("KiteVxBot", "onScan: %s(%s)", ScanStatus[status], status);
+    log.info('KiteVxBot', 'onScan: %s(%s)', ScanStatus[status], status);
   }
 };
 const onLogin = (user: Contact) => {
-  log.info("KiteVxBot", "%s login", user);
+  log.info('KiteVxBot', '%s login', user);
 };
 
-const onMessage = (message: Message) => {
-  log.info(
-    'Message from %s',
-    'Message content %s',
-    message.talker(),
-    message.text()
-  )
-}
 app(buildOptions).catch(() => {
-  log.error(
-    'KiteVxBot',
-    'running error: 😢😢😢😢😢'
-  )
+  log.error('KiteVxBot', 'running error: 😢😢😢😢😢');
 });
