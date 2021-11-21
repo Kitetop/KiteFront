@@ -3,9 +3,9 @@ import qrcodeTerminal from 'qrcode-terminal';
 import { buildOptions } from './config/wechat';
 import MessageAdapter from './kernel/MessageAdapter';
 import onMessage from './kernel/dispatchMessage';
-import dealFinance from './command/finance';
+
 /** 给机器人注册指令 */
-MessageAdapter.getInstance().registerPipeline('KiteBot:金融', dealFinance);
+MessageAdapter.install();
 
 const app = async (option: any) => {
   const vxbot = WechatyBuilder.build(option);

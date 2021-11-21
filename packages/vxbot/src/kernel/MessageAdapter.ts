@@ -1,4 +1,5 @@
 import type { Message, Wechaty } from 'wechaty';
+import { command } from '../config/wechat';
 
 /**
  * 消息处理适配器
@@ -7,7 +8,7 @@ export default class MessageAdapter {
   /** 用来存储注册好的机器人指令 */
   public static pipeline = new Map<string, Function>();
 
-  private static instance: MessageAdapter | null = null;
+  private static instance: MessageAdapter;
 
   public static vxbot: Wechaty;
 
@@ -18,12 +19,18 @@ export default class MessageAdapter {
     if (!this.instance) this.instance = new MessageAdapter();
     return this.instance;
   }
+
+  public static install() {
+    command.forEach(comm => {
+      MessageAdapter.registerPipeline(comm.command, comm.handle);
+    });
+  }
   /**
    * 注册微信机器人能够处理的信息功能
    * @param key => 注册消息处理指令的名称
    * @param callback => 处理逻辑函数
    */
-  public registerPipeline(key: string, callback: Function) {
+  public static registerPipeline(key: string, callback: Function) {
     MessageAdapter.pipeline.set(key, callback);
   }
   /**

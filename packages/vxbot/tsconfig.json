@@ -12,9 +12,6 @@
     "allowJs": true,
     "sourceMap": true,
     "baseUrl": ".",
-    "paths": {
-      "@/*": ["src/*"]
-    },
     "lib": [
       "esnext"
     ]

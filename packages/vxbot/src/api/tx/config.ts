@@ -14,8 +14,14 @@ export const request = axios.create({
 
 request.interceptors.request.use(
   (config) => {
-    if (config.method === 'get') config.params.key = key;
-    if (config.method === 'post') config.data.key = key;
+    if (config.method === 'get') {
+      config.params = config.params || {};
+      config.params.key = key;
+    }
+    if (config.method === 'post') {
+      config.data = config.data || {};
+      config.data.key = key;
+    }
     return config;
   },
   (error) => {
