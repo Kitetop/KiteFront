@@ -1,19 +1,22 @@
-import { WechatyBuilder, log, ScanStatus, Contact, Message } from 'wechaty';
+import { WechatyBuilder, log, ScanStatus, Contact } from 'wechaty';
 import qrcodeTerminal from 'qrcode-terminal';
 import { buildOptions } from './config/wechat';
 import MessageAdapter from './kernel/MessageAdapter';
 import onMessage from './kernel/dispatchMessage';
 import dealFinance from './command/finance';
-
+/** 给机器人注册指令 */
 MessageAdapter.getInstance().registerPipeline('KiteBot:金融', dealFinance);
+
 const app = async (option: any) => {
   const vxbot = WechatyBuilder.build(option);
+  /** 保存机器人instance, 方便调用wechaty自身提供的方法 */
+  MessageAdapter.registerBot(vxbot);
   vxbot.on('scan', onScan);
   vxbot.on('login', onLogin);
   vxbot.on('message', onMessage);
   await vxbot.start();
 };
-
+// 199535
 const onScan = (qrcode: string, status: number) => {
   if (status === ScanStatus.Waiting || status === ScanStatus.Timeout) {
     qrcodeTerminal.generate(qrcode, { small: true }); // show qrcode on console

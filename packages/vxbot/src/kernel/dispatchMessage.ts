@@ -1,4 +1,5 @@
 import { Message, log } from 'wechaty';
+import MessageAdapter from './MessageAdapter';
 import MeesageAdapter from './MessageAdapter';
 
 export default async function onMessage(msg: Message) {
@@ -17,5 +18,5 @@ export default async function onMessage(msg: Message) {
       return;
     }
   }
-  await msg.say('机器人无法提供你刚才说的服务😢:(此条消息来自: KiteVxBot💗💗💗)');
+  await MessageAdapter.send(msg, '机器人无法提供你刚才说的服务😢😢😢');
 }
