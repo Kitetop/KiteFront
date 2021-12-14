@@ -17,7 +17,7 @@ module.exports = {
     "@typescript-eslint"
   ],
   "rules": {
-    'no-console': 'error',
+    'no-console': 'off',
     'no-plusplus': 'off',
     'linebreak-style': 'off',
     '@typescript-eslint/no-explicit-any': 'off',

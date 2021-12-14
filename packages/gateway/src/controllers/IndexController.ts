@@ -13,13 +13,13 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import Application = require('koa');
-import BaseController = require('./BaseController');
-class IndexController extends BaseController {
+
+import Application from 'koa';
+import BaseController from './BaseController';
+
+export default class IndexController extends BaseController {
 
   execute(ctx: Application.ParameterizedContext) {
     ctx.body = 'This is IndexController.ts'
   }
 }
-
-export = IndexController;

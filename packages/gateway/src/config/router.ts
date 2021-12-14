@@ -1,6 +1,6 @@
 /**
- * Copyright © 2021 Kitetop All rights reserved. 
- * 
+ * Copyright © 2021 Kitetop All rights reserved.
+ *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -16,13 +16,10 @@
 export interface KiteGateWayRouteConfig {
   path: string;
   action: string;
-  method: string
+  method: string;
 }
 
-module.exports = {
-  routers: [
-    { path: '/indexs', action: 'IndexController', method: 'GET'},
-    { path: '/index', action: 'IndexController', method: 'GET'},
-  ]
-};
-
+export const routers = [
+  { path: "/indexs", action: "IndexController", method: "GET" },
+  { path: "/index", action: "IndexController", method: "GET" },
+];

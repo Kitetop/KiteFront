@@ -14,14 +14,11 @@
  * limitations under the License.
  */
 
-interface KiteConfigOptions {
+export interface KiteConfigOptions {
   port: number
 }
 
-const server = require('./server');
+export default {
+  port: process.env.NODE_ENV.trim() === 'development' ? 4800 : 5000
+} as KiteConfigOptions;
 
-module.exports = {
-  ...server
-}
-
-export = KiteConfigOptions;

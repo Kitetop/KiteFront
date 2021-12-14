@@ -13,9 +13,8 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import Application = require("koa");
+import Koa from 'koa';
+import { run } from './kernel/Phase';
 
-const Koa = require('koa');
-const app: Application = new Koa();
-const run = require('./kernel/Phase');
+const app = new Koa();
 run(app);

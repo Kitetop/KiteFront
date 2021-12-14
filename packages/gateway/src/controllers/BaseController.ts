@@ -13,13 +13,13 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import Application = require("koa");
-import RouterType = require("koa-router");
+
+import Router from "@koa/router";
+import Koa from "koa";
 
 type KiteGateWayHttpMethod = 'head' | 'options'| 'get'| 'put'| 'patch'| 'post'| 'delete';
-
-abstract class BaseController {
-  constructor(router: RouterType, url: string, method: KiteGateWayHttpMethod = 'get') {
+export default abstract class BaseController {
+  constructor(router: Router, url: string, method: KiteGateWayHttpMethod = 'get') {
     try {
       router[method](url, ctx => this.execute(ctx));
     } catch (e) {
@@ -31,7 +31,5 @@ abstract class BaseController {
     console.log(`[Kite GateWay]: ${type} => ${info}`);
   }
 
-  abstract execute(ctx: Application.ParameterizedContext): void | any;
+  abstract execute(ctx: Koa.ParameterizedContext): void | any;
 }
-
-export = BaseController;
