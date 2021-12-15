@@ -13,13 +13,13 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-export interface KiteGateWayRouteConfig {
-  path: string;
-  action: string;
-  method: string;
+interface KiteGateWayRouteConfig {
+  path: string; /** 路由地址 */
+  action: string; /** 指定此路由使用的功能类 */
+  method: string; /** 请求方法类别 */
 }
-
+/** 设置网关接受的路由 */
 export const routers = [
   { path: "/indexs", action: "IndexController", method: "GET" },
   { path: "/index", action: "IndexController", method: "GET" },
-];
+] as KiteGateWayRouteConfig[];

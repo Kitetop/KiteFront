@@ -6,7 +6,7 @@
   "author": "Kitetop <1363215999@qq.com>",
   "license": "ISC",
   "scripts": {
-    "start": "cross-env NODE_ENV=development nodemon ./src/app.ts"
+    "start": "cross-env NODE_ENV=development nodemon -r tsconfig-paths/register ./src/app.ts"
   },
   "dependencies": {
     "@koa/router": "^10.1.1",
@@ -21,6 +21,7 @@
     "eslint": "7.4.0",
     "nodemon": "^2.0.14",
     "ts-node": "^10.4.0",
+    "tsconfig-paths": "^3.12.0",
     "typescript": "~3.9.3"
   }
 }

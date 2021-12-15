@@ -13,12 +13,11 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+import { routers } from './router';
+import config from './config';
 
-export interface KiteConfigOptions {
-  port: number
+export {
+  routers,
+  config
 }
-
-export default {
-  port: process.env.NODE_ENV.trim() === 'development' ? 4800 : 5000
-} as KiteConfigOptions;
 

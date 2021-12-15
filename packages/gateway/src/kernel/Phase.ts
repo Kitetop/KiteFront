@@ -16,9 +16,7 @@
 import path from 'path';
 import Router from '@koa/router';
 import Koa from 'koa';
-/** 配置模块 */
-import { KiteGateWayRouteConfig, routers } from "../config/router";
-import config from '../config';
+import { config, routers } from '@config/index';
 
 /** Router module */
 const _router = new Router();
@@ -28,7 +26,7 @@ process.env.Controllers = path.join(__dirname, '../controllers/');
 process.env.Services = path.join(__dirname, '../Services/');
 
 /** 注册路由阶段: 配置此网关支持的所有路由 */
-(routers as KiteGateWayRouteConfig[]).forEach(async (router) => {
+routers.forEach(async (router) => {
   try {
     const { default: module} = await import(process.env.Controllers + router.action);
     new module(_router, router.path, router.method.toLowerCase());

@@ -1,12 +1,16 @@
 {
   "compilerOptions": {
+      "baseUrl": "./",
       "module": "commonjs",
       "target": "es2017",
       "noImplicitAny": true,
       "outDir": "./dist",
       "sourceMap": true,
       "esModuleInterop": true,
-      "allowSyntheticDefaultImports": true
+      "allowSyntheticDefaultImports": true,
+      "paths": {
+        "@config/*": ["src/config/*"]
+      }
   },
   "include": [
       "./src/**/*",
