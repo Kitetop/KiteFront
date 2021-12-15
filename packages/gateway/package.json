@@ -10,7 +10,9 @@
   },
   "dependencies": {
     "@koa/router": "^10.1.1",
-    "koa": "^2.13.4"
+    "koa": "^2.13.4",
+    "koa-views": "^8.0.0",
+    "nunjucks": "^3.2.3"
   },
   "devDependencies": {
     "@types/koa": "^2.13.4",

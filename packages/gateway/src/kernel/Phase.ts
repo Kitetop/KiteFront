@@ -17,13 +17,18 @@ import path from 'path';
 import Router from '@koa/router';
 import Koa from 'koa';
 import { config, routers } from '@config/index';
+import Views from 'koa-views';
+import ErrorHandle from './ErrorHandler';
 
 /** Router module */
 const _router = new Router();
 
 /** 网关初始化阶段： 注册全局变量 */
 process.env.Controllers = path.join(__dirname, '../controllers/');
-process.env.Services = path.join(__dirname, '../Services/');
+process.env.Services = path.join(__dirname, '../services/');
+process.env.Views = path.join(__dirname, '../views/');
+
+/** 注册view的render */
 
 /** 注册路由阶段: 配置此网关支持的所有路由 */
 routers.forEach(async (router) => {
@@ -36,7 +41,11 @@ routers.forEach(async (router) => {
 });
 
 export function run(app: Koa) {
+  /** 捕获系统运行时的异常 */
+  ErrorHandle.handleError(app);
   app
+    /** 配置系统的views层 */
+    .use(Views(process.env.Views, { map: { html: 'nunjucks' }}))
     .use(_router.routes())
     .use(_router.allowedMethods());
   app.listen(config.port, () => {

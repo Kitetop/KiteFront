@@ -19,7 +19,9 @@ import BaseController from './BaseController';
 
 export default class IndexController extends BaseController {
 
-  execute(ctx: Application.ParameterizedContext) {
-    ctx.body = 'This is IndexController.ts'
+  async execute(ctx: Application.ParameterizedContext) {
+    ctx.body = await ctx.render('index', {
+      username: '🍋🍋🍋'
+    });
   }
 }
