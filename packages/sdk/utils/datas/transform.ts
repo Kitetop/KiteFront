@@ -25,7 +25,7 @@ export type Transform = {
  */
 function getValueSafety(keys: any[], object: object | object[]): any {
   return keys.reduce((obj, index) => {
-    return (obj && obj[index] !== undefined) ? obj[index] : null
+    return obj?.[index] ?? null;
   }, object)
 }
 /**

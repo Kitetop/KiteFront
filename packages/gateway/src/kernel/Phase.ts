@@ -13,7 +13,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import path from 'path';
 import Router from '@koa/router';
 import Koa from 'koa';
 import { config, routers } from '@config/index';
@@ -23,17 +22,10 @@ import ErrorHandle from './ErrorHandler';
 /** Router module */
 const _router = new Router();
 
-/** 网关初始化阶段： 注册全局变量 */
-process.env.Controllers = path.join(__dirname, '../controllers/');
-process.env.Services = path.join(__dirname, '../services/');
-process.env.Views = path.join(__dirname, '../views/');
-
-/** 注册view的render */
-
 /** 注册路由阶段: 配置此网关支持的所有路由 */
 routers.forEach(async (router) => {
   try {
-    const { default: module} = await import(process.env.Controllers + router.action);
+    const { default: module} = await import(config.path.controllers + router.action);
     new module(_router, router.path, router.method.toLowerCase());
   } catch (e) {
     throw new Error(`[Kite GateWay]: error => ${router.path}: 路由入口配置错误，系统无法加载此模块~~~~`)
@@ -45,7 +37,7 @@ export function run(app: Koa) {
   ErrorHandle.handleError(app);
   app
     /** 配置系统的views层 */
-    .use(Views(process.env.Views, { map: { html: 'nunjucks' }}))
+    .use(Views(config.path.views, { map: { html: 'nunjucks' }}))
     .use(_router.routes())
     .use(_router.allowedMethods());
   app.listen(config.port, () => {
