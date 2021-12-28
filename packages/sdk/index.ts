@@ -25,6 +25,7 @@ export type SDK = {install: typeof install}
   & Dom
   & Tree
 ;
+
 KiteSDK.install({
   /** validators.ts */
   ...validators,

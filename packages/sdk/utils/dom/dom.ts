@@ -13,8 +13,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+import Validators from "../datas/validators";
 export type Dom = {
-  checkEventTargetNodeBelong: typeof checkEventTargetNodeBelong
+  checkEventTargetNodeBelong: typeof checkEventTargetNodeBelong,
+  KiteResizeObserver: typeof KiteResizeObserver
 }
 /**
  * 检查触发事件的DOM元素是否是为指定DOM或者属于DOM
@@ -31,7 +33,60 @@ function checkEventTargetNodeBelong(event: Event, root: HTMLElement | null): boo
   }
   return false;
 }
+class KiteResizeObserver {
+  /** 当监听的元素发生变化时，需要触发的callback */
+  private callback: (...args: object[]) => void;
+
+  private observe$: ResizeObserver | MutationObserver;
+  /** 使用 MutationObserver 时需要提供的配置项*/
+  private options = {
+    attributes: true,
+    characterData: true,
+    childList: true,
+    subtree: false,
+    attributeOldValue: true
+  };
+
+  constructor(callback: (...args: object[]) => void, options = {}) {
+    this.callback = callback;
+    !Validators.isEmpty(options) ? (this.options as object)= options : '';
+  }
+
+  /**
+ * 监听Dom尺寸是否发生过变化
+ * @param callback
+ * @returns 
+ */
+  public createResizeEvent(): KiteResizeObserver {
+    if (window.ResizeObserver) {
+      this.observe$ = new window.ResizeObserver(this.callback);
+      return this;
+    }
+    // eslint-disable-next-line no-console
+    console.warn('The browser does not support `ResizeObserver`, try use `MutationObserver` now!');
+    if (window.MutationObserver) {
+      this.observe$ = new window.MutationObserver(this.callback);
+      return this;
+    }
+    throw new Error('The browser does not support `ResizeObserver` and `MutationObserver`, please provide the polyfill file!');
+  }
+  /**
+   * 开始监听Dom变化
+   * @param target
+   * @returns 
+   */
+  public observe(target: HTMLElement) {
+    if (this.observe$ instanceof window.ResizeObserver) {
+      this.observe$.observe(target);
+      return;
+    } else {
+      this.observe$.observe(target, this.options);
+    }
+  }
+
+}
 
 export default {
-  checkEventTargetNodeBelong
+  checkEventTargetNodeBelong,
+  KiteResizeObserver
 }
